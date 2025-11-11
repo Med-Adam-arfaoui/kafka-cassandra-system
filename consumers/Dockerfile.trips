@@ -1,0 +1,18 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the trips consumer script
+COPY trips_consumer.py .
+
+# Set environment variables defaults
+ENV KAFKA_BROKER=kafka:9092
+ENV CASSANDRA_HOST=cassandra
+ENV TOPIC=trips
+
+# Start the trips consumer
+CMD ["python", "trips_consumer.py"]
