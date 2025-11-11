@@ -299,11 +299,11 @@ def test_cassandra_connection():
     except Exception as e:
         return False, f"Connection Error: {str(e)}"
 
-def get_table_data_pandas(table_name, keyspace="taxi_tracking", limit=100):
+def get_table_data_pandas(table_name, keyspace="taxi_tracking"):
     try:
         cluster = Cluster([os.getenv("CASSANDRA_HOST", "cassandra")], port=9042)
         session = cluster.connect(keyspace)
-        query = f"SELECT * FROM {table_name} LIMIT {limit}"
+        query = f"SELECT * FROM {table_name}"
         rows = session.execute(query)
         data = [dict(row._asdict()) for row in rows]
         session.shutdown()
