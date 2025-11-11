@@ -38,7 +38,7 @@ def generate_trip_event(taxi_id):
     start_time = datetime.utcnow()
     end_time = start_time + timedelta(minutes=random.randint(5, 60))
     return {
-        "trip_id": str(uuid.uuid4()),
+        "trip_id": random.randint(100,10000000),
         "taxi_id": taxi_id,
         "start_time": start_time.isoformat(),
         "end_time": end_time.isoformat(),

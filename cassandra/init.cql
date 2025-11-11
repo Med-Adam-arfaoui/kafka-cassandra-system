@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS positions (
 ) WITH CLUSTERING ORDER BY (timestamp DESC);
 
 CREATE TABLE IF NOT EXISTS trips (
-    trip_id uuid,  
+    trip_id int,  
     taxi_id int,
     start_time timestamp,
     end_time timestamp,
